@@ -2,7 +2,7 @@
 # 然后用reduce函数将该列表变为一个含有10个大小写和长度不固定的字符串NewWords。
 # 然后用map函数将NewWords变为一个首字母大写，其他字母小写的列表NewName.
 import random
-from functools import reduce    #  引入reduce函数
+from functools import reduce
 def word2sentence(word1,word2):   #  word2sentence函数用来将两个字符组成一个字符串。用在reduce里面可以将多个单字字符组成字符串。
     NewWord=word1+word2
     return NewWord
