@@ -15,7 +15,7 @@ Words=[]                   # Words 用来存放随机生成的所有的单个字
 for i in range(1,11):
     word=[]                #  word用来存放10组中每一组的所有字符。
     for s in range(1,random.randint(3,6)):       # 这一句用来表明word的长度在[2,5]个之间
-        t=random.randint(1,2)         #  t用来决定是大写还是小写字母
+        t=random.randint(1, 2)         #  t用来决定是大写还是小写字母
         if t==1:
             word.append(chr(random.randint(65,90)))         # t 为 1时，生成大写字母
         elif t==2:

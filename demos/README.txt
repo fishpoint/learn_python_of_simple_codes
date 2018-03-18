@@ -7,3 +7,6 @@ hello.py:	输出hello world
 5.py    :   元素为class的list生成。
 6.py    :   使用埃氏筛法和filter函数计算素数
 6plus.py:   是对filter和无穷生成的简单应用。
+7.py    :   使用装饰器，输出程序运行时间。
+8.py    :   python中@property的应用。具体对property的解释：http://python.jobbole.com/81967/
+
