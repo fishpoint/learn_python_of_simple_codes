@@ -13,4 +13,4 @@ hello.py:	输出hello world
 10.py   :   一些基本的文件操作
 dirs_size.py:  对文件夹内部的文件和文件夹进行排序。(慢慢完善)
 setup.py:   用于将python脚本变为.exe文件（在3.6版本不能正常运行）使用方法见setup.py
-
+setup_auto.py:  输入文件名，自动将.py文件转换为.exe文件。
