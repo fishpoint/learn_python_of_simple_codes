@@ -10,4 +10,6 @@ hello.py:	输出hello world
 7.py    :   使用装饰器，输出程序运行时间。
 8.py    :   python中@property的应用。具体对property的解释：http://python.jobbole.com/81967/
 9.py    :   python的多重继承。主要检验一下多重继承的继承顺序。
+10.py   :   一些基本的文件操作
+dirs_size:  对文件夹内部的文件和文件夹进行排序。(慢慢完善)
 
