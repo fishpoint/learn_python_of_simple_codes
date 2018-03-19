@@ -3,9 +3,12 @@ __author__ = "YuDian"
 '''
     v1.0:   2018/3/19 21:39
         完成对指定的文件夹(TopDir)内部的文件和目录进行排序。文件和目录混合排序。可选择从小到大或者是从大到小。
+    v1.2:  2018/3/19
+        添加对files和dirs的分开显示排序结果。将排序结果放在本地磁盘中。
 '''
-import os
 
+import os
+N=1
 class dirc(object):         # dirc类用来表示文件的大小和类型(kb,mb,gb)
     def __init__(self,name,size,sizetype,ctype=0):
         self.name=name     # name存放名字
@@ -32,7 +35,8 @@ class dirc(object):         # dirc类用来表示文件的大小和类型(kb,mb,
             return 'File'
 
     def printlog(self):
-        print(self.realctype,':',self.name,'__',self.size,self.realtype)
+        self.logges=self.realctype+':'+self.name+'       '+str(self.size)+self.realtype
+        print(self.logges)
 
 AllSize=[]         # AllSize用来存放所有的dirc类
 
@@ -51,13 +55,17 @@ def GetDirSize(dirname):                #  得到dirfile的大小。dirname是�
 
 def beautiful_size(size):           # 对size进行单位转换
     sizeflag=1
+    global N
     while size>1024:
         size=size/1024
         sizeflag=sizeflag+1    # sizeflag:1  byte       2: kb    3:mb    4:gb
+    print('running...'+str(N))
+    N=N+1
     return size,sizeflag
 
-def all_sort(list,SortType=1):     # SortType:1   AllSize[0]:min     SortType:0  AllSize[0]:max
-
+def all_sort(list,SortType=1,spearate=0):
+# SortType:1   AllSize[0]:min     SortType:0  AllSize[0]:max
+# speratate:1  file和dir一块排序     0 ： 分开排序
     # 不能用可变参量*name传入list。不然在函数内会变成tuple
 
 #用冒泡排序法对List进行排序
@@ -69,15 +77,31 @@ def all_sort(list,SortType=1):     # SortType:1   AllSize[0]:min     SortType:0 
             d=RivalHigh.size * 1024 ** (RivalHigh.sizetype - 1)
             if RivalLow.size*1024**(RivalLow.sizetype-1)>RivalHigh.size*1024**(RivalHigh.sizetype-1):
                 AllSize[i],AllSize[i+1]=RivalHigh,RivalLow
+    NewSize=AllSize
+    if not spearate:
+        NewSize=[]
+        for n in AllSize:
+            if n.ctype==0:
+                NewSize.append(n)
+        for n in AllSize:
+            if n.ctype==1:
+                NewSize.append(n)
+
+
     if SortType==1:                 # 选择排序方法：默认从小到大
-        return AllSize              # 1 从小到大
+        return NewSize              # 1 从小到大
     elif SortType==0:
-        return AllSize[::-1]        # 0  从大到小
+        return NewSize[::-1]        # 0  从大到小
 
 
 
 n=1                       # 得到TopDor下一层的文件夹名
-TopDir=r'F:\for_python'           # TopDir 指向最高层的文件夹
+TopDir=r'D:/'           # TopDir 指向最高层的文件夹
+TopDir=input('where you want to sort?:')
+SizeWay=0
+SizeWay=int(input('choose a way to sort(1:bigger;0:smaller):'))
+spearate=0
+spearate=int(input('choose sort files and dirs total or depart(1:total;0:depart)'))
 for(root,dirs,files) in os.walk(TopDir):
     if n==1:
         FirstName=dirs           # FirstName下存放的是TopDir下第一层的文件夹名（只有名字，不是全路径）
@@ -97,10 +121,18 @@ for(root,dirs,files) in os.walk(TopDir):
         # for i in AllSize:
         #     print(i.name,'__',i.size,'__',i.realtype)
         # print(type(AllSize))
-        SortedAllSize=all_sort(AllSize)
+        SortedAllSize=all_sort(AllSize,SortType=SizeWay,spearate=spearate)
+        if not os.path.exists(os.path.join(r'F:/','save_size')):
+            os.mkdir(os.path.join(r'F:/','save_size'))
+        with open(r'F:/save_size/save_sort.txt','w') as f:
+            f.write('')
         for i in SortedAllSize:
             i.printlog()
-
+            with open(r'F:/save_size/save_sort.txt','a') as f:
+                f.write(i.logges+'\n')
+    else:
+        break
+input()
 
 
 

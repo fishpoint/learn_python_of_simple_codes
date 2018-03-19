@@ -12,4 +12,5 @@ hello.py:	输出hello world
 9.py    :   python的多重继承。主要检验一下多重继承的继承顺序。
 10.py   :   一些基本的文件操作
 dirs_size:  对文件夹内部的文件和文件夹进行排序。(慢慢完善)
+setup.py:   用于将python脚本变为.exe文件（在3.6版本不能正常运行）使用方法见setup.py
 
