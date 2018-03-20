@@ -14,3 +14,7 @@ hello.py:	输出hello world
 dirs_size.py:  对文件夹内部的文件和文件夹进行排序。(慢慢完善)
 setup.py:   用于将python脚本变为.exe文件（在3.6版本不能正常运行）使用方法见setup.py
 setup_auto.py:  输入文件名，自动将.py文件转换为.exe文件。
+11.py   :   pickle.dump()与pickle.load()
+one.py two.py   :   用来理解__name__=="__main__"
+12.py   :   windows下用multiprocessing的Process创建子进程的简单方法和里面的一点注意事项和笔记。
+code_compare.py:    简陋的代码对比。

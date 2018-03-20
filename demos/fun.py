@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 __author__ = "YuDian"
 '''
-    just for fun
+var=1
 '''
 
 
 import os
-var=0
+var=62
 
 if var<100:
     var=var+1

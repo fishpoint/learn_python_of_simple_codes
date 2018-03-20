@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = "YuDian"
 import os
-var=1
+var=0
 
 if var==0:
     var=var+1
@@ -14,7 +14,7 @@ if var==2:
     from distutils.core import setup
     import os
     import py2exe
-    setup(console=['fun.py'])
+    setup(console=['setup_auto.py'])
 
 if var==1:
     var=var+1
