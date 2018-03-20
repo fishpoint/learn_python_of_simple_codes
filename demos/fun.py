@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 __author__ = "YuDian"
 '''
-var=1
+just for fun
 '''
 
 
